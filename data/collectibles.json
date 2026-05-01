@@ -1,5 +1,8 @@
 {
   "family_photo": {"x": 520, "y": 160, "respect_gain": 1},
   "old_key": {"x": 200, "y": 500, "respect_gain": 2},
-  "spray_can": {"x": 700, "y": 500, "respect_gain": 2, "unlock_clothing": "hoodie"}
+  "spray_can": {"x": 700, "y": 500, "respect_gain": 2, "unlock_clothing": "hoodie"},
+  "hood_tag": {"x": 470, "y": 330, "respect_gain": 2},
+  "hangout_tape": {"x": 820, "y": 530, "respect_gain": 2},
+  "school_route_flyer": {"x": 865, "y": 130, "respect_gain": 1}
 }

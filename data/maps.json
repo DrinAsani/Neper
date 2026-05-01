@@ -3,37 +3,589 @@
     "name": "House",
     "width": 960,
     "height": 640,
-    "floor_color": [45, 50, 60],
-    "walls": [[0, 70, 960, 20], [0, 620, 960, 20], [0, 70, 20, 570], [940, 70, 20, 570], [300, 230, 200, 20]],
-    "doors": [
-      {"id": "house_to_elevator", "rect": [910, 300, 30, 80], "target_map": "elevator", "target_spawn": [60, 300], "required_respect": 0}
+    "floor_color": [
+      45,
+      50,
+      60
     ],
-    "collectibles": ["family_photo"],
-    "npcs": ["mom"]
+    "walls": [
+      [
+        0,
+        70,
+        960,
+        20
+      ],
+      [
+        0,
+        620,
+        960,
+        20
+      ],
+      [
+        0,
+        70,
+        20,
+        570
+      ],
+      [
+        940,
+        70,
+        20,
+        570
+      ],
+      [
+        300,
+        230,
+        200,
+        20
+      ]
+    ],
+    "doors": [
+      {
+        "id": "house_to_elevator",
+        "rect": [
+          910,
+          300,
+          30,
+          80
+        ],
+        "target_map": "elevator",
+        "target_spawn": [
+          60,
+          300
+        ],
+        "required_respect": 0
+      }
+    ],
+    "collectibles": [
+      "family_photo"
+    ],
+    "npcs": [
+      "mom"
+    ]
   },
   "elevator": {
     "name": "Elevator & Hall",
     "width": 960,
     "height": 640,
-    "floor_color": [55, 55, 65],
-    "walls": [[0, 70, 960, 20], [0, 620, 960, 20], [0, 70, 20, 570], [940, 70, 20, 570]],
-    "doors": [
-      {"id": "elevator_to_house", "rect": [20, 300, 30, 80], "target_map": "house", "target_spawn": [860, 300], "required_respect": 0},
-      {"id": "elevator_to_street", "rect": [900, 300, 30, 80], "target_map": "street", "target_spawn": [60, 300], "required_respect": 5}
+    "floor_color": [
+      55,
+      55,
+      65
     ],
-    "collectibles": ["old_key"],
-    "npcs": ["super"]
+    "walls": [
+      [
+        0,
+        70,
+        960,
+        20
+      ],
+      [
+        0,
+        620,
+        960,
+        20
+      ],
+      [
+        0,
+        70,
+        20,
+        570
+      ],
+      [
+        940,
+        70,
+        20,
+        570
+      ]
+    ],
+    "doors": [
+      {
+        "id": "elevator_to_house",
+        "rect": [
+          20,
+          300,
+          30,
+          80
+        ],
+        "target_map": "house",
+        "target_spawn": [
+          860,
+          300
+        ],
+        "required_respect": 0
+      },
+      {
+        "id": "elevator_to_street",
+        "rect": [
+          900,
+          300,
+          30,
+          80
+        ],
+        "target_map": "street",
+        "target_spawn": [
+          60,
+          300
+        ],
+        "required_respect": 5
+      }
+    ],
+    "collectibles": [
+      "old_key"
+    ],
+    "npcs": [
+      "super"
+    ]
   },
   "street": {
     "name": "City Street",
     "width": 960,
     "height": 640,
-    "floor_color": [50, 50, 50],
-    "walls": [[0, 70, 960, 20], [0, 620, 960, 20], [0, 70, 20, 570], [940, 70, 20, 570], [600, 200, 20, 300]],
-    "doors": [
-      {"id": "street_to_elevator", "rect": [20, 300, 30, 80], "target_map": "elevator", "target_spawn": [860, 300], "required_respect": 0}
+    "floor_color": [
+      50,
+      50,
+      50
     ],
-    "collectibles": ["spray_can"],
-    "npcs": ["ray"]
+    "walls": [
+      [
+        0,
+        70,
+        960,
+        20
+      ],
+      [
+        0,
+        620,
+        960,
+        20
+      ],
+      [
+        0,
+        70,
+        20,
+        570
+      ],
+      [
+        940,
+        70,
+        20,
+        570
+      ],
+      [
+        600,
+        200,
+        20,
+        300
+      ]
+    ],
+    "doors": [
+      {
+        "id": "street_to_elevator",
+        "rect": [
+          20,
+          300,
+          30,
+          80
+        ],
+        "target_map": "elevator",
+        "target_spawn": [
+          860,
+          300
+        ],
+        "required_respect": 0
+      },
+      {
+        "id": "street_to_hood",
+        "rect": [
+          905,
+          260,
+          25,
+          120
+        ],
+        "target_map": "hood",
+        "target_spawn": [
+          70,
+          340
+        ],
+        "required_respect": 0
+      }
+    ],
+    "collectibles": [
+      "spray_can"
+    ],
+    "npcs": [
+      "ray"
+    ]
+  },
+  "hood": {
+    "name": "The Hood Courtyard",
+    "width": 960,
+    "height": 640,
+    "floor_color": [
+      112,
+      114,
+      110
+    ],
+    "player_start": [
+      70,
+      340
+    ],
+    "walls": [
+      [
+        0,
+        70,
+        960,
+        20
+      ],
+      [
+        0,
+        620,
+        960,
+        20
+      ],
+      [
+        0,
+        70,
+        20,
+        570
+      ],
+      [
+        940,
+        70,
+        20,
+        570
+      ],
+      [
+        130,
+        130,
+        18,
+        360
+      ],
+      [
+        810,
+        130,
+        18,
+        360
+      ],
+      [
+        320,
+        280,
+        160,
+        30
+      ],
+      [
+        520,
+        300,
+        140,
+        30
+      ],
+      [
+        220,
+        500,
+        210,
+        20
+      ],
+      [
+        650,
+        500,
+        140,
+        20
+      ],
+      [
+        420,
+        145,
+        120,
+        20
+      ],
+      [
+        740,
+        175,
+        100,
+        20
+      ]
+    ],
+    "doors": [
+      {
+        "id": "hood_to_street",
+        "rect": [
+          20,
+          300,
+          30,
+          100
+        ],
+        "target_map": "street",
+        "target_spawn": [
+          860,
+          300
+        ],
+        "required_respect": 0
+      },
+      {
+        "id": "hood_entrance_north",
+        "rect": [
+          260,
+          90,
+          40,
+          20
+        ],
+        "target_map": "hood",
+        "target_spawn": [
+          260,
+          130
+        ],
+        "required_respect": 0
+      },
+      {
+        "id": "hood_hangout_access",
+        "rect": [
+          780,
+          470,
+          40,
+          20
+        ],
+        "target_map": "hood",
+        "target_spawn": [
+          780,
+          440
+        ],
+        "required_respect": 0
+      },
+      {
+        "id": "hood_to_school_path",
+        "rect": [
+          900,
+          120,
+          30,
+          110
+        ],
+        "target_map": "hood",
+        "target_spawn": [
+          860,
+          120
+        ],
+        "required_respect": 0
+      }
+    ],
+    "collectibles": [
+      "hood_tag",
+      "hangout_tape",
+      "school_route_flyer"
+    ],
+    "npcs": [
+      "zuri",
+      "uncle_tone",
+      "coach_eli",
+      "ms_nia"
+    ],
+    "decor": {
+      "courtyard_tiles": {
+        "rect": [
+          150,
+          150,
+          640,
+          330
+        ],
+        "base_color": [
+          136,
+          136,
+          132
+        ],
+        "line_color": [
+          112,
+          112,
+          108
+        ],
+        "tile": 36
+      },
+      "apartment_blocks": [
+        {
+          "rect": [
+            35,
+            95,
+            95,
+            450
+          ],
+          "color": [
+            142,
+            70,
+            62
+          ]
+        },
+        {
+          "rect": [
+            830,
+            95,
+            95,
+            450
+          ],
+          "color": [
+            142,
+            70,
+            62
+          ]
+        },
+        {
+          "rect": [
+            220,
+            95,
+            520,
+            55
+          ],
+          "color": [
+            150,
+            76,
+            68
+          ]
+        }
+      ],
+      "concrete_blocks": [
+        {
+          "rect": [
+            320,
+            280,
+            160,
+            30
+          ],
+          "color": [
+            165,
+            165,
+            160
+          ]
+        },
+        {
+          "rect": [
+            520,
+            300,
+            140,
+            30
+          ],
+          "color": [
+            165,
+            165,
+            160
+          ]
+        },
+        {
+          "rect": [
+            420,
+            230,
+            90,
+            26
+          ],
+          "color": [
+            156,
+            156,
+            151
+          ]
+        }
+      ],
+      "parking_area": {
+        "rect": [
+          760,
+          245,
+          165,
+          170
+        ],
+        "color": [
+          84,
+          88,
+          92
+        ],
+        "line_color": [
+          178,
+          178,
+          172
+        ]
+      },
+      "school_path": {
+        "rect": [
+          835,
+          95,
+          95,
+          140
+        ],
+        "color": [
+          94,
+          110,
+          122
+        ],
+        "line_color": [
+          205,
+          205,
+          170
+        ]
+      },
+      "hangout_corner": {
+        "rect": [
+          740,
+          440,
+          155,
+          120
+        ],
+        "color": [
+          96,
+          92,
+          96
+        ],
+        "graffiti_color": [
+          232,
+          94,
+          210
+        ]
+      },
+      "trees": [
+        [
+          110,
+          120
+        ],
+        [
+          110,
+          500
+        ],
+        [
+          850,
+          120
+        ],
+        [
+          850,
+          500
+        ],
+        [
+          470,
+          560
+        ],
+        [
+          470,
+          95
+        ]
+      ],
+      "weeds": [
+        [
+          270,
+          235
+        ],
+        [
+          450,
+          355
+        ],
+        [
+          620,
+          260
+        ],
+        [
+          300,
+          430
+        ],
+        [
+          540,
+          455
+        ],
+        [
+          700,
+          360
+        ]
+      ]
+    }
   }
 }

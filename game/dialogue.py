@@ -17,6 +17,8 @@ class DialogueEngine:
                 return False
             if ctype == "item_owned" and cond.get("item_id") not in self.state.items:
                 return False
+            if ctype == "mission_active" and self.state.missions.get(cond.get("mission_id")) != "active":
+                return False
         return True
 
     def apply_effects(self, effects):

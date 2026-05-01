@@ -187,8 +187,64 @@ class Game:
                         if npc:
                             self.start_dialogue(npc)
 
+    def _draw_map_decor(self):
+        decor = getattr(self.current_map, "decor", {}) or {}
+
+        courtyard = decor.get("courtyard_tiles")
+        if courtyard:
+            rect = pygame.Rect(*courtyard["rect"])
+            pygame.draw.rect(self.screen, tuple(courtyard.get("base_color", [130, 130, 130])), rect)
+            tile = courtyard.get("tile", 32)
+            line_color = tuple(courtyard.get("line_color", [105, 105, 105]))
+            for x in range(rect.left, rect.right, tile):
+                pygame.draw.line(self.screen, line_color, (x, rect.top), (x, rect.bottom), 1)
+            for y in range(rect.top, rect.bottom, tile):
+                pygame.draw.line(self.screen, line_color, (rect.left, y), (rect.right, y), 1)
+
+        for block in decor.get("apartment_blocks", []):
+            rect = pygame.Rect(*block["rect"])
+            pygame.draw.rect(self.screen, tuple(block.get("color", [140, 70, 60])), rect)
+            pygame.draw.rect(self.screen, (70, 45, 40), rect, 2)
+
+        for block in decor.get("concrete_blocks", []):
+            rect = pygame.Rect(*block["rect"])
+            pygame.draw.rect(self.screen, tuple(block.get("color", [160, 160, 160])), rect)
+            pygame.draw.rect(self.screen, (95, 95, 95), rect, 1)
+
+        parking = decor.get("parking_area")
+        if parking:
+            rect = pygame.Rect(*parking["rect"])
+            pygame.draw.rect(self.screen, tuple(parking.get("color", [80, 85, 90])), rect)
+            line_color = tuple(parking.get("line_color", [180, 180, 170]))
+            for y in range(rect.top + 12, rect.bottom - 10, 30):
+                pygame.draw.line(self.screen, line_color, (rect.left + 8, y), (rect.right - 8, y), 2)
+
+        school_path = decor.get("school_path")
+        if school_path:
+            rect = pygame.Rect(*school_path["rect"])
+            pygame.draw.rect(self.screen, tuple(school_path.get("color", [90, 105, 120])), rect)
+            pygame.draw.line(self.screen, tuple(school_path.get("line_color", [200, 200, 170])), (rect.left + 8, rect.top + 8), (rect.right - 8, rect.bottom - 8), 3)
+
+        hangout = decor.get("hangout_corner")
+        if hangout:
+            rect = pygame.Rect(*hangout["rect"])
+            pygame.draw.rect(self.screen, tuple(hangout.get("color", [95, 95, 95])), rect)
+            pygame.draw.rect(self.screen, (55, 55, 55), rect, 2)
+            graffiti = tuple(hangout.get("graffiti_color", [220, 90, 200]))
+            pygame.draw.line(self.screen, graffiti, (rect.left + 10, rect.top + 30), (rect.right - 10, rect.top + 18), 3)
+            pygame.draw.line(self.screen, (90, 220, 220), (rect.left + 22, rect.top + 65), (rect.right - 25, rect.top + 55), 3)
+
+        for tx, ty in decor.get("trees", []):
+            pygame.draw.circle(self.screen, (72, 120, 72), (tx, ty), 17)
+            pygame.draw.circle(self.screen, (94, 152, 94), (tx, ty), 11)
+
+        for wx, wy in decor.get("weeds", []):
+            pygame.draw.line(self.screen, (82, 130, 72), (wx, wy), (wx + 4, wy - 7), 2)
+            pygame.draw.line(self.screen, (82, 130, 72), (wx, wy), (wx - 4, wy - 6), 2)
+
     def draw(self, npcs):
         self.screen.fill(self.current_map.floor_color)
+        self._draw_map_decor()
         for wall in self.current_map.walls:
             pygame.draw.rect(self.screen, COLORS["wall"], wall)
         for door in self.current_map.doors:
