@@ -69,8 +69,10 @@ python main.py
 
 ## Player sprite
 - The player now attempts to load `assets/sprites/player/tulla_sprite.png` as a 4x4 sprite sheet.
+- Sprite display scale is configurable via `PLAYER_SPRITE_SCALE` in `game/settings.py` (collision/hitbox remains based on `PLAYER_SIZE`).
 - Sheet layout expected:
   - Rows: `down`, `left`, `right`, `up`
   - Columns: `idle`, `walk1`, `walk2`, `walk3`
 - Movement uses walk frames while idle uses the first column.
+- Near-white pixels in sprite frames are converted to transparent to remove white box backgrounds.
 - If the sprite file is missing or fails to load, the game falls back to rectangle rendering without affecting collision logic.
