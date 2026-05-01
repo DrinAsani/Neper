@@ -1,5 +1,9 @@
 {
   "mom": {"name": "Mom", "x": 180, "y": 180, "dialogue_id": "mom_dialogue", "color": [255, 130, 130]},
   "super": {"name": "Super D", "x": 380, "y": 300, "dialogue_id": "super_dialogue", "color": [255, 200, 100]},
-  "ray": {"name": "Ray", "x": 760, "y": 300, "dialogue_id": "ray_dialogue", "color": [120, 230, 120]}
+  "ray": {"name": "Ray", "x": 760, "y": 300, "dialogue_id": "ray_dialogue", "color": [120, 230, 120]},
+  "zuri": {"name": "Zuri", "x": 805, "y": 500, "dialogue_id": "zuri_dialogue", "color": [224, 141, 255]},
+  "uncle_tone": {"name": "Uncle Tone", "x": 280, "y": 145, "dialogue_id": "uncle_tone_dialogue", "color": [255, 190, 110]},
+  "coach_eli": {"name": "Coach Eli", "x": 860, "y": 170, "dialogue_id": "coach_eli_dialogue", "color": [120, 200, 255]},
+  "ms_nia": {"name": "Ms. Nia", "x": 850, "y": 315, "dialogue_id": "ms_nia_dialogue", "color": [170, 240, 170]}
 }

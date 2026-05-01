@@ -32,12 +32,12 @@ python main.py
 - `Esc`: quit
 
 ## Current MVP Content
-- Maps: `house`, `elevator`, `street`
-- NPCs: Mom, Super D, Ray
+- Maps: `house`, `elevator`, `street`, `hood`
+- NPCs: Mom, Super D, Ray, Zuri, Uncle Tone, Coach Eli, Ms. Nia
 - Branching dialogues with conditions/effects
 - Respect system affects door unlock and choices
-- 3 collectibles
-- 1 mission (`errand_run`) with completion flow
+- 6 collectibles (including 3 hood-specific pickups)
+- 4 missions (`errand_run`, `hood_explore`, `find_the_crew`, `head_to_school`)
 - 1 locked door requiring reputation/respect
 - 1 clothing unlock (`hoodie`) reflected by player color
 
@@ -76,3 +76,19 @@ python main.py
 - Movement uses walk frames while idle uses the first column.
 - Near-white pixels in sprite frames are converted to transparent to remove white box backgrounds.
 - If the sprite file is missing or fails to load, the game falls back to rectangle rendering without affecting collision logic.
+
+## Hood expansion
+- Added a new main outdoor area, `hood`, built as a data-driven map in `data/maps.json` with courtyard, concrete blocks, tree edges, hangout side building, school path, parking edge, and connected roads.
+- `street` now includes a transition door to `hood`, and `hood` includes a return door to `street`.
+- Added four hood NPCs (Zuri, Uncle Tone, Coach Eli, Ms. Nia) with new dialogue trees and progression hooks.
+- Added three hood collectibles near key landmarks: central courtyard, graffiti/hangout side, and school path edge.
+- Added a first hood mission chain:
+  1. Explore the hood (`hood_explore`)
+  2. Find your crew (`find_the_crew`)
+  3. Head to school (`head_to_school`)
+- Respect and unlock systems are integrated into hood dialogue outcomes, including mission unlock/completion and school route unlock.
+
+### Reaching the hood in-game
+1. Start from house and progress to street as before.
+2. On `street`, use the right-side transition (`street_to_hood`) to enter `hood`.
+3. In `hood`, follow NPC conversations and mission prompts toward the school-side route.
