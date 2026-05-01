@@ -7,12 +7,22 @@
         "choices": [
           {
             "text": "Yeah, got things to handle.",
-            "effects": [{"type": "add_respect", "value": 1}],
+            "effects": [
+              {
+                "type": "add_respect",
+                "value": 1
+              }
+            ],
             "next": "advice"
           },
           {
             "text": "Not now.",
-            "effects": [{"type": "add_respect", "value": -1}],
+            "effects": [
+              {
+                "type": "add_respect",
+                "value": -1
+              }
+            ],
             "next": "end_cold"
           }
         ]
@@ -22,19 +32,39 @@
         "choices": [
           {
             "text": "Good look, I'll do that.",
-            "effects": [{"type": "unlock_mission", "mission_id": "errand_run"}, {"type": "set_flag", "flag": "talked_mom"}],
+            "effects": [
+              {
+                "type": "unlock_mission",
+                "mission_id": "errand_run"
+              },
+              {
+                "type": "set_flag",
+                "flag": "talked_mom"
+              }
+            ],
             "next": null
           },
           {
             "text": "I move on my own time.",
-            "effects": [{"type": "add_respect", "value": -1}],
+            "effects": [
+              {
+                "type": "add_respect",
+                "value": -1
+              }
+            ],
             "next": null
           }
         ]
       },
       "end_cold": {
         "text": "Aight... keep your head straight.",
-        "choices": [{"text": "...", "effects": [], "next": null}]
+        "choices": [
+          {
+            "text": "...",
+            "effects": [],
+            "next": null
+          }
+        ]
       }
     }
   },
@@ -44,8 +74,21 @@
       "intro": {
         "text": "The elevator to the street ain't for everybody.",
         "choices": [
-          {"text": "What do I need?", "next": "respect_check", "effects": []},
-          {"text": "Move out the way.", "effects": [{"type": "add_respect", "value": -2}], "next": null}
+          {
+            "text": "What do I need?",
+            "next": "respect_check",
+            "effects": []
+          },
+          {
+            "text": "Move out the way.",
+            "effects": [
+              {
+                "type": "add_respect",
+                "value": -2
+              }
+            ],
+            "next": null
+          }
         ]
       },
       "respect_check": {
@@ -53,14 +96,38 @@
         "choices": [
           {
             "text": "I'm earning it.",
-            "conditions": [{"type": "respect_gte", "value": 5}],
-            "effects": [{"type": "unlock_door", "door_id": "elevator_to_street"}, {"type": "add_respect", "value": 1}],
+            "conditions": [
+              {
+                "type": "respect_gte",
+                "value": 5
+              }
+            ],
+            "effects": [
+              {
+                "type": "unlock_door",
+                "door_id": "elevator_to_street"
+              },
+              {
+                "type": "add_respect",
+                "value": 1
+              }
+            ],
             "next": "unlock"
           },
           {
             "text": "Any job for me?",
-            "conditions": [{"type": "mission_completed", "mission_id": "errand_run"}],
-            "effects": [{"type": "add_respect", "value": 2}],
+            "conditions": [
+              {
+                "type": "mission_completed",
+                "mission_id": "errand_run"
+              }
+            ],
+            "effects": [
+              {
+                "type": "add_respect",
+                "value": 2
+              }
+            ],
             "next": "vouched"
           },
           {
@@ -72,11 +139,23 @@
       },
       "unlock": {
         "text": "Bet. Street access unlocked.",
-        "choices": [{"text": "Thanks.", "effects": [], "next": null}]
+        "choices": [
+          {
+            "text": "Thanks.",
+            "effects": [],
+            "next": null
+          }
+        ]
       },
       "vouched": {
         "text": "Ray vouched for you. You're official now.",
-        "choices": [{"text": "Respect.", "effects": [], "next": null}]
+        "choices": [
+          {
+            "text": "Respect.",
+            "effects": [],
+            "next": null
+          }
+        ]
       }
     }
   },
@@ -88,30 +167,320 @@
         "choices": [
           {
             "text": "I'll find it.",
-            "conditions": [{"type": "flag_set", "flag": "talked_mom"}],
-            "effects": [{"type": "unlock_mission", "mission_id": "errand_run"}],
+            "conditions": [
+              {
+                "type": "flag_set",
+                "flag": "talked_mom"
+              }
+            ],
+            "effects": [
+              {
+                "type": "unlock_mission",
+                "mission_id": "errand_run"
+              }
+            ],
             "next": "after_accept"
           },
           {
             "text": "Not interested.",
-            "effects": [{"type": "add_respect", "value": -1}],
+            "effects": [
+              {
+                "type": "add_respect",
+                "value": -1
+              }
+            ],
             "next": null
           },
           {
             "text": "I already got it.",
-            "conditions": [{"type": "item_owned", "item_id": "spray_can"}],
-            "effects": [{"type": "complete_mission", "mission_id": "errand_run"}, {"type": "add_respect", "value": 3}, {"type": "unlock_clothing", "clothing_id": "hoodie"}],
+            "conditions": [
+              {
+                "type": "item_owned",
+                "item_id": "spray_can"
+              }
+            ],
+            "effects": [
+              {
+                "type": "complete_mission",
+                "mission_id": "errand_run"
+              },
+              {
+                "type": "add_respect",
+                "value": 3
+              },
+              {
+                "type": "unlock_clothing",
+                "clothing_id": "hoodie"
+              }
+            ],
             "next": "complete"
           }
         ]
       },
       "after_accept": {
         "text": "Look near the benches down south.",
-        "choices": [{"text": "I'm on it.", "effects": [], "next": null}]
+        "choices": [
+          {
+            "text": "I'm on it.",
+            "effects": [],
+            "next": null
+          }
+        ]
       },
       "complete": {
         "text": "Solid. That hoodie is yours now.",
-        "choices": [{"text": "Good looks.", "effects": [], "next": null}]
+        "choices": [
+          {
+            "text": "Good looks.",
+            "effects": [],
+            "next": null
+          }
+        ]
+      }
+    }
+  },
+  "zuri_dialogue": {
+    "start": "hangout_intro",
+    "nodes": {
+      "hangout_intro": {
+        "text": "You made it to the side spot. Courtyard's alive today.",
+        "choices": [
+          {
+            "text": "I'm scouting the whole hood.",
+            "conditions": [
+              {
+                "type": "mission_active",
+                "mission_id": "hood_explore"
+              }
+            ],
+            "effects": [
+              {
+                "type": "set_flag",
+                "flag": "hood_center_seen"
+              },
+              {
+                "type": "unlock_mission",
+                "mission_id": "find_the_crew"
+              },
+              {
+                "type": "add_respect",
+                "value": 1
+              }
+            ],
+            "next": "crew_tip"
+          },
+          {
+            "text": "Let's lock in this hangout.",
+            "conditions": [
+              {
+                "type": "mission_active",
+                "mission_id": "find_the_crew"
+              }
+            ],
+            "effects": [
+              {
+                "type": "set_flag",
+                "flag": "hangout_unlocked"
+              },
+              {
+                "type": "complete_mission",
+                "mission_id": "find_the_crew"
+              },
+              {
+                "type": "unlock_mission",
+                "mission_id": "head_to_school"
+              }
+            ],
+            "next": "hangout_live"
+          },
+          {
+            "text": "Later.",
+            "effects": [],
+            "next": null
+          }
+        ]
+      },
+      "crew_tip": {
+        "text": "Hit Uncle Tone and Coach Eli next. Then we open up the full talk.",
+        "choices": [
+          {
+            "text": "Say less.",
+            "effects": [],
+            "next": null
+          }
+        ]
+      },
+      "hangout_live": {
+        "text": "Crew's tapped in. School route convo unlocked.",
+        "choices": [
+          {
+            "text": "Time to move.",
+            "effects": [],
+            "next": null
+          }
+        ]
+      }
+    }
+  },
+  "uncle_tone_dialogue": {
+    "start": "tone_intro",
+    "nodes": {
+      "tone_intro": {
+        "text": "Respect the courtyard and it respects you back.",
+        "choices": [
+          {
+            "text": "I'm learning the block.",
+            "effects": [
+              {
+                "type": "set_flag",
+                "flag": "talked_uncle_tone"
+              },
+              {
+                "type": "add_respect",
+                "value": 1
+              }
+            ],
+            "next": "tone_route"
+          },
+          {
+            "text": "Any word for me?",
+            "conditions": [
+              {
+                "type": "mission_active",
+                "mission_id": "hood_explore"
+              }
+            ],
+            "effects": [
+              {
+                "type": "set_flag",
+                "flag": "hood_north_seen"
+              }
+            ],
+            "next": "tone_landmark"
+          }
+        ]
+      },
+      "tone_route": {
+        "text": "Path to school is on the east side. Stay sharp near the road.",
+        "choices": [
+          {
+            "text": "Got it.",
+            "effects": [],
+            "next": null
+          }
+        ]
+      },
+      "tone_landmark": {
+        "text": "Check the central blocks, then slide to Zuri at the graffiti spot.",
+        "choices": [
+          {
+            "text": "On my way.",
+            "effects": [],
+            "next": null
+          }
+        ]
+      }
+    }
+  },
+  "coach_eli_dialogue": {
+    "start": "coach_intro",
+    "nodes": {
+      "coach_intro": {
+        "text": "Court's not open yet, but you can scope the school side.",
+        "choices": [
+          {
+            "text": "I'm here for the route.",
+            "conditions": [
+              {
+                "type": "mission_active",
+                "mission_id": "head_to_school"
+              },
+              {
+                "type": "flag_set",
+                "flag": "hangout_unlocked"
+              }
+            ],
+            "effects": [
+              {
+                "type": "set_flag",
+                "flag": "school_route_open"
+              },
+              {
+                "type": "complete_mission",
+                "mission_id": "head_to_school"
+              },
+              {
+                "type": "unlock_door",
+                "door_id": "hood_to_school_path"
+              },
+              {
+                "type": "add_respect",
+                "value": 2
+              }
+            ],
+            "next": "coach_unlock"
+          },
+          {
+            "text": "Any tips before I go?",
+            "effects": [
+              {
+                "type": "set_flag",
+                "flag": "talked_coach_eli"
+              }
+            ],
+            "next": "coach_tip"
+          }
+        ]
+      },
+      "coach_tip": {
+        "text": "Keep left past the parking strip, then cut up to the court lane.",
+        "choices": [
+          {
+            "text": "Good look.",
+            "effects": [],
+            "next": null
+          }
+        ]
+      },
+      "coach_unlock": {
+        "text": "You earned it. School approach is now open for the next chain.",
+        "choices": [
+          {
+            "text": "Let's run it.",
+            "effects": [],
+            "next": null
+          }
+        ]
+      }
+    }
+  },
+  "ms_nia_dialogue": {
+    "start": "nia_intro",
+    "nodes": {
+      "nia_intro": {
+        "text": "Parking side gets busy. Keep your moves clean.",
+        "choices": [
+          {
+            "text": "Thanks Ms. Nia.",
+            "effects": [
+              {
+                "type": "set_flag",
+                "flag": "talked_ms_nia"
+              }
+            ],
+            "next": null
+          },
+          {
+            "text": "I'm good.",
+            "effects": [
+              {
+                "type": "add_respect",
+                "value": -1
+              }
+            ],
+            "next": null
+          }
+        ]
       }
     }
   }

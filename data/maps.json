@@ -31,9 +31,48 @@
     "floor_color": [50, 50, 50],
     "walls": [[0, 70, 960, 20], [0, 620, 960, 20], [0, 70, 20, 570], [940, 70, 20, 570], [600, 200, 20, 300]],
     "doors": [
-      {"id": "street_to_elevator", "rect": [20, 300, 30, 80], "target_map": "elevator", "target_spawn": [860, 300], "required_respect": 0}
+      {"id": "street_to_elevator", "rect": [20, 300, 30, 80], "target_map": "elevator", "target_spawn": [860, 300], "required_respect": 0},
+      {"id": "street_to_hood", "rect": [905, 260, 25, 120], "target_map": "hood", "target_spawn": [70, 340], "required_respect": 0}
     ],
     "collectibles": ["spray_can"],
     "npcs": ["ray"]
+  },
+  "hood": {
+    "name": "The Hood Courtyard",
+    "width": 960,
+    "height": 640,
+    "floor_color": [112, 114, 110],
+    "player_start": [70, 340],
+    "walls": [
+      [0, 70, 960, 20], [0, 620, 960, 20], [0, 70, 20, 570], [940, 70, 20, 570],
+      [130, 130, 18, 360], [810, 130, 18, 360],
+      [320, 280, 160, 30], [520, 300, 140, 30],
+      [220, 500, 210, 20], [650, 500, 140, 20],
+      [420, 145, 120, 20], [740, 175, 100, 20]
+    ],
+    "doors": [
+      {"id": "hood_to_street", "rect": [20, 300, 30, 100], "target_map": "street", "target_spawn": [860, 300], "required_respect": 0},
+      {"id": "hood_entrance_north", "rect": [260, 90, 40, 20], "target_map": "hood", "target_spawn": [260, 130], "required_respect": 0},
+      {"id": "hood_hangout_access", "rect": [780, 470, 40, 20], "target_map": "hood", "target_spawn": [780, 440], "required_respect": 0},
+      {"id": "hood_to_school_path", "rect": [900, 120, 30, 110], "target_map": "hood", "target_spawn": [860, 120], "required_respect": 0}
+    ],
+    "collectibles": ["hood_tag", "hangout_tape", "school_route_flyer"],
+    "npcs": ["zuri", "uncle_tone", "coach_eli", "ms_nia"],
+    "decor": {
+      "rects": [
+        {"rect": [150, 150, 640, 330], "color": [126, 126, 122]},
+        {"rect": [170, 170, 600, 290], "color": [134, 134, 130]},
+        {"rect": [740, 440, 150, 120], "color": [95, 95, 92]},
+        {"rect": [835, 95, 95, 140], "color": [88, 95, 106]},
+        {"rect": [760, 210, 130, 70], "color": [68, 72, 75]},
+        {"rect": [830, 250, 85, 145], "color": [90, 90, 90]}
+      ],
+      "trees": [
+        [110, 120], [110, 500], [850, 120], [850, 500], [470, 560], [470, 95]
+      ],
+      "weeds": [
+        [270, 235], [450, 355], [620, 260], [300, 430], [540, 455], [700, 360]
+      ]
+    }
   }
 }

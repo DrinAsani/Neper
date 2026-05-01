@@ -187,8 +187,20 @@ class Game:
                         if npc:
                             self.start_dialogue(npc)
 
+    def _draw_map_decor(self):
+        decor = getattr(self.current_map, "decor", {}) or {}
+        for rect_data in decor.get("rects", []):
+            pygame.draw.rect(self.screen, tuple(rect_data.get("color", [90, 90, 90])), pygame.Rect(*rect_data["rect"]))
+        for tx, ty in decor.get("trees", []):
+            pygame.draw.circle(self.screen, (62, 114, 62), (tx, ty), 16)
+            pygame.draw.circle(self.screen, (78, 136, 78), (tx, ty), 10)
+        for wx, wy in decor.get("weeds", []):
+            pygame.draw.line(self.screen, (82, 130, 72), (wx, wy), (wx + 4, wy - 7), 2)
+            pygame.draw.line(self.screen, (82, 130, 72), (wx, wy), (wx - 4, wy - 6), 2)
+
     def draw(self, npcs):
         self.screen.fill(self.current_map.floor_color)
+        self._draw_map_decor()
         for wall in self.current_map.walls:
             pygame.draw.rect(self.screen, COLORS["wall"], wall)
         for door in self.current_map.doors:

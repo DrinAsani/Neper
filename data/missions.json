@@ -2,5 +2,17 @@
   "errand_run": {
     "title": "Find the spray can and report back to Ray",
     "initial_state": "locked"
+  },
+  "hood_explore": {
+    "title": "Explore the hood courtyard landmarks",
+    "initial_state": "active"
+  },
+  "find_the_crew": {
+    "title": "Find your crew and open the hangout conversation",
+    "initial_state": "locked"
+  },
+  "head_to_school": {
+    "title": "Follow the hood path and check the school side",
+    "initial_state": "locked"
   }
 }
