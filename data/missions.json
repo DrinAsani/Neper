@@ -1,0 +1,6 @@
+{
+  "errand_run": {
+    "title": "Find the spray can and report back to Ray",
+    "initial_state": "locked"
+  }
+}

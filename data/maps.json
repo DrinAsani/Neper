@@ -1,0 +1,39 @@
+{
+  "house": {
+    "name": "House",
+    "width": 960,
+    "height": 640,
+    "floor_color": [45, 50, 60],
+    "walls": [[0, 70, 960, 20], [0, 620, 960, 20], [0, 70, 20, 570], [940, 70, 20, 570], [300, 230, 200, 20]],
+    "doors": [
+      {"id": "house_to_elevator", "rect": [910, 300, 30, 80], "target_map": "elevator", "target_spawn": [60, 300], "required_respect": 0}
+    ],
+    "collectibles": ["family_photo"],
+    "npcs": ["mom"]
+  },
+  "elevator": {
+    "name": "Elevator & Hall",
+    "width": 960,
+    "height": 640,
+    "floor_color": [55, 55, 65],
+    "walls": [[0, 70, 960, 20], [0, 620, 960, 20], [0, 70, 20, 570], [940, 70, 20, 570]],
+    "doors": [
+      {"id": "elevator_to_house", "rect": [20, 300, 30, 80], "target_map": "house", "target_spawn": [860, 300], "required_respect": 0},
+      {"id": "elevator_to_street", "rect": [900, 300, 30, 80], "target_map": "street", "target_spawn": [60, 300], "required_respect": 5}
+    ],
+    "collectibles": ["old_key"],
+    "npcs": ["super"]
+  },
+  "street": {
+    "name": "City Street",
+    "width": 960,
+    "height": 640,
+    "floor_color": [50, 50, 50],
+    "walls": [[0, 70, 960, 20], [0, 620, 960, 20], [0, 70, 20, 570], [940, 70, 20, 570], [600, 200, 20, 300]],
+    "doors": [
+      {"id": "street_to_elevator", "rect": [20, 300, 30, 80], "target_map": "elevator", "target_spawn": [860, 300], "required_respect": 0}
+    ],
+    "collectibles": ["spray_can"],
+    "npcs": ["ray"]
+  }
+}

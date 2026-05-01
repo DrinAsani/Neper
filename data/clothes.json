@@ -1,0 +1,4 @@
+{
+  "default": {"name": "Default Outfit"},
+  "hoodie": {"name": "Street Hoodie", "unlock": "collectible:spray_can"}
+}
