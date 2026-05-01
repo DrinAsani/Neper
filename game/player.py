@@ -29,6 +29,7 @@ class Player:
 
     def _load_sprite_frames(self):
         if not PLAYER_SPRITE_PATH.exists():
+            print(f"[NEPER] Player sprite not found at {PLAYER_SPRITE_PATH}. Using rectangle fallback.")
             return None
         try:
             sheet = pygame.image.load(str(PLAYER_SPRITE_PATH)).convert_alpha()
@@ -48,7 +49,8 @@ class Player:
                     row_frames.append(frame)
                 rows.append(row_frames)
             return rows
-        except pygame.error:
+        except pygame.error as exc:
+            print(f"[NEPER] Failed to load player sprite sheet: {exc}. Using rectangle fallback.")
             return None
 
     def update(self, dt, walls):
