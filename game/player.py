@@ -35,6 +35,8 @@ class Player:
             sheet_w, sheet_h = sheet.get_size()
             frame_w = sheet_w // PLAYER_SPRITE_COLS
             frame_h = sheet_h // PLAYER_SPRITE_ROWS
+            if frame_w <= 0 or frame_h <= 0:
+                return None
             rows = []
             for row in range(PLAYER_SPRITE_ROWS):
                 row_frames = []
@@ -78,7 +80,7 @@ class Player:
             return
         self.anim_timer += dt
         step = 1.0 / PLAYER_ANIM_FPS
-        if self.anim_timer >= step:
+        while self.anim_timer >= step:
             self.anim_timer -= step
             self.walk_frame_idx = (self.walk_frame_idx + 1) % 3  # 3 walking columns (1..3)
 
