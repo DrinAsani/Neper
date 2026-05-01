@@ -188,6 +188,7 @@ class Game:
                             self.start_dialogue(npc)
 
     def _draw_map_decor(self):
+        # Legacy decor support keeps older map data working.
         decor = getattr(self.current_map, "decor", {}) or {}
         for rect_data in decor.get("rects", []):
             pygame.draw.rect(self.screen, tuple(rect_data.get("color", [90, 90, 90])), pygame.Rect(*rect_data["rect"]))
@@ -197,6 +198,30 @@ class Game:
         for wx, wy in decor.get("weeds", []):
             pygame.draw.line(self.screen, (82, 130, 72), (wx, wy), (wx + 4, wy - 7), 2)
             pygame.draw.line(self.screen, (82, 130, 72), (wx, wy), (wx - 4, wy - 6), 2)
+
+        for item in getattr(self.current_map, "decorations", []):
+            dtype = item.get("type", "").lower()
+            color = tuple(item.get("color", [90, 90, 90]))
+            width = int(item.get("width", 0))
+
+            if dtype == "rect":
+                rect = pygame.Rect(item["x"], item["y"], item["w"], item["h"])
+                pygame.draw.rect(self.screen, color, rect, width)
+            elif dtype == "circle":
+                pygame.draw.circle(self.screen, color, (item["x"], item["y"]), item["radius"], width)
+            elif dtype == "line":
+                pygame.draw.line(self.screen, color, (item["x1"], item["y1"]), (item["x2"], item["y2"]), max(1, width))
+            elif dtype == "path":
+                points = [tuple(p) for p in item.get("points", [])]
+                if len(points) >= 2:
+                    pygame.draw.lines(self.screen, color, False, points, max(1, width))
+            elif dtype in ("text", "label"):
+                text = item.get("text") or item.get("label")
+                if text:
+                    font_size = int(item.get("size", 14))
+                    font = pygame.font.SysFont("arial", font_size)
+                    text_surface = font.render(text, True, color)
+                    self.screen.blit(text_surface, (item["x"], item["y"]))
 
     def draw(self, npcs):
         self.screen.fill(self.current_map.floor_color)

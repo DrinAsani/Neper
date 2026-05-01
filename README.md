@@ -61,6 +61,31 @@ python main.py
    - `required_respect`
 2. Optionally unlock via dialogue effect `unlock_door` with same `id`.
 
+
+## Map visual decorations
+- Maps can now include a top-level `decorations` array in `data/maps.json` for visual-only landmarks.
+- Supported decoration object types:
+  - `rect` (`x`, `y`, `w`, `h`, `color`, optional `width`, `label`)
+  - `circle` (`x`, `y`, `radius`, `color`, optional `width`, `label`)
+  - `line` (`x1`, `y1`, `x2`, `y2`, `color`, optional `width`, `label`)
+  - `path` (`points`, `color`, optional `width`, `label`)
+  - `text`/`label` (`x`, `y`, `text` or `label`, `color`, optional `size`)
+- Decorations are rendered for readability only and **do not** affect collision; movement still uses `walls`.
+- The `hood` map now uses decorations for apartment blocks, courtyard tiles, trees, parking/cars, school route/court, graffiti hangout area, and entrances.
+
+Example:
+```json
+{
+  "type": "rect",
+  "x": 100,
+  "y": 100,
+  "w": 200,
+  "h": 80,
+  "color": [120, 45, 35],
+  "label": "Apartment Block"
+}
+```
+
 ## Replace placeholders with real assets
 - Keep data IDs the same.
 - Swap rectangle rendering in `game/core.py` with sprite blits.

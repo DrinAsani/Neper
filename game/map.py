@@ -14,3 +14,4 @@ class GameMap:
         self.npcs = data.get("npcs", [])
         self.player_start = data.get("player_start")
         self.decor = data.get("decor", {})
+        self.decorations = data.get("decorations", [])
