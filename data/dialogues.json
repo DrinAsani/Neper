@@ -1,0 +1,118 @@
+{
+  "mom_dialogue": {
+    "start": "greet",
+    "nodes": {
+      "greet": {
+        "text": "Morning! You heading out? Respect starts at home.",
+        "choices": [
+          {
+            "text": "Yeah, got things to handle.",
+            "effects": [{"type": "add_respect", "value": 1}],
+            "next": "advice"
+          },
+          {
+            "text": "Not now.",
+            "effects": [{"type": "add_respect", "value": -1}],
+            "next": "end_cold"
+          }
+        ]
+      },
+      "advice": {
+        "text": "Check on Super D first. He always knows what's moving.",
+        "choices": [
+          {
+            "text": "Good look, I'll do that.",
+            "effects": [{"type": "unlock_mission", "mission_id": "errand_run"}, {"type": "set_flag", "flag": "talked_mom"}],
+            "next": null
+          },
+          {
+            "text": "I move on my own time.",
+            "effects": [{"type": "add_respect", "value": -1}],
+            "next": null
+          }
+        ]
+      },
+      "end_cold": {
+        "text": "Aight... keep your head straight.",
+        "choices": [{"text": "...", "effects": [], "next": null}]
+      }
+    }
+  },
+  "super_dialogue": {
+    "start": "intro",
+    "nodes": {
+      "intro": {
+        "text": "The elevator to the street ain't for everybody.",
+        "choices": [
+          {"text": "What do I need?", "next": "respect_check", "effects": []},
+          {"text": "Move out the way.", "effects": [{"type": "add_respect", "value": -2}], "next": null}
+        ]
+      },
+      "respect_check": {
+        "text": "Show me you're known around here.",
+        "choices": [
+          {
+            "text": "I'm earning it.",
+            "conditions": [{"type": "respect_gte", "value": 5}],
+            "effects": [{"type": "unlock_door", "door_id": "elevator_to_street"}, {"type": "add_respect", "value": 1}],
+            "next": "unlock"
+          },
+          {
+            "text": "Any job for me?",
+            "conditions": [{"type": "mission_completed", "mission_id": "errand_run"}],
+            "effects": [{"type": "add_respect", "value": 2}],
+            "next": "vouched"
+          },
+          {
+            "text": "I'm still working on it.",
+            "effects": [],
+            "next": null
+          }
+        ]
+      },
+      "unlock": {
+        "text": "Bet. Street access unlocked.",
+        "choices": [{"text": "Thanks.", "effects": [], "next": null}]
+      },
+      "vouched": {
+        "text": "Ray vouched for you. You're official now.",
+        "choices": [{"text": "Respect.", "effects": [], "next": null}]
+      }
+    }
+  },
+  "ray_dialogue": {
+    "start": "street_intro",
+    "nodes": {
+      "street_intro": {
+        "text": "Yo, I'm looking for a spray can. You got me?",
+        "choices": [
+          {
+            "text": "I'll find it.",
+            "conditions": [{"type": "flag_set", "flag": "talked_mom"}],
+            "effects": [{"type": "unlock_mission", "mission_id": "errand_run"}],
+            "next": "after_accept"
+          },
+          {
+            "text": "Not interested.",
+            "effects": [{"type": "add_respect", "value": -1}],
+            "next": null
+          },
+          {
+            "text": "I already got it.",
+            "conditions": [{"type": "item_owned", "item_id": "spray_can"}],
+            "effects": [{"type": "complete_mission", "mission_id": "errand_run"}, {"type": "add_respect", "value": 3}, {"type": "unlock_clothing", "clothing_id": "hoodie"}],
+            "next": "complete"
+          }
+        ]
+      },
+      "after_accept": {
+        "text": "Look near the benches down south.",
+        "choices": [{"text": "I'm on it.", "effects": [], "next": null}]
+      },
+      "complete": {
+        "text": "Solid. That hoodie is yours now.",
+        "choices": [{"text": "Good looks.", "effects": [], "next": null}]
+      }
+    }
+  }
+}
