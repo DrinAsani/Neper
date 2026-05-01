@@ -65,3 +65,12 @@ python main.py
 - Keep data IDs the same.
 - Swap rectangle rendering in `game/core.py` with sprite blits.
 - Put your images in `assets/sprites/` and map art in `assets/maps/`.
+
+
+## Player sprite
+- The player now attempts to load `assets/sprites/player/tulla_sprite.png` as a 4x4 sprite sheet.
+- Sheet layout expected:
+  - Rows: `down`, `left`, `right`, `up`
+  - Columns: `idle`, `walk1`, `walk2`, `walk3`
+- Movement uses walk frames while idle uses the first column.
+- If the sprite file is missing or fails to load, the game falls back to rectangle rendering without affecting collision logic.
