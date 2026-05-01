@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 import pygame
 
-from game.settings import SCREEN_WIDTH, SCREEN_HEIGHT, FPS, COLORS, DATA_DIR, INTERACT_DISTANCE
+from game.settings import SCREEN_WIDTH, SCREEN_HEIGHT, FPS, COLORS, DATA_DIR, INTERACT_DISTANCE, PLAYER_SPRITE_SCALE
 from game.player import Player
 from game.npc import NPC
 from game.map import GameMap
@@ -62,11 +62,26 @@ class Game:
             for col_index in range(4):
                 frame_rect = pygame.Rect(col_index * frame_width, row_index * frame_height, frame_width, frame_height)
                 frame = sheet.subsurface(frame_rect).copy()
-                frame = pygame.transform.scale(frame, (self.player.rect.width, self.player.rect.height))
+                self._apply_near_white_transparency(frame)
+                scaled_size = (
+                    max(1, int(self.player.rect.width * PLAYER_SPRITE_SCALE)),
+                    max(1, int(self.player.rect.height * PLAYER_SPRITE_SCALE)),
+                )
+                frame = pygame.transform.scale(frame, scaled_size)
                 frames.append(frame)
             sprites[direction] = frames
 
         return sprites
+
+
+    @staticmethod
+    def _apply_near_white_transparency(surface, threshold=235):
+        width, height = surface.get_size()
+        for x in range(width):
+            for y in range(height):
+                r, g, b, a = surface.get_at((x, y))
+                if r >= threshold and g >= threshold and b >= threshold:
+                    surface.set_at((x, y), (r, g, b, 0))
 
     def _draw_player(self):
         if not self.player_sprites:
@@ -76,7 +91,12 @@ class Game:
 
         frames = self.player_sprites[self.player.direction]
         frame_index = 0 if not self.player.is_moving else self.player.animation_frame + 1
-        self.screen.blit(frames[frame_index], self.player.rect.topleft)
+        frame = frames[frame_index]
+        draw_pos = (
+            self.player.rect.centerx - frame.get_width() // 2,
+            self.player.rect.centery - frame.get_height() // 2,
+        )
+        self.screen.blit(frame, draw_pos)
     def _load_json(self, filename):
         with open(DATA_DIR / filename, "r", encoding="utf-8") as f:
             return json.load(f)
