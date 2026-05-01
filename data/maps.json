@@ -3,76 +3,1189 @@
     "name": "House",
     "width": 960,
     "height": 640,
-    "floor_color": [45, 50, 60],
-    "walls": [[0, 70, 960, 20], [0, 620, 960, 20], [0, 70, 20, 570], [940, 70, 20, 570], [300, 230, 200, 20]],
-    "doors": [
-      {"id": "house_to_elevator", "rect": [910, 300, 30, 80], "target_map": "elevator", "target_spawn": [60, 300], "required_respect": 0}
+    "floor_color": [
+      45,
+      50,
+      60
     ],
-    "collectibles": ["family_photo"],
-    "npcs": ["mom"]
+    "walls": [
+      [
+        0,
+        70,
+        960,
+        20
+      ],
+      [
+        0,
+        620,
+        960,
+        20
+      ],
+      [
+        0,
+        70,
+        20,
+        570
+      ],
+      [
+        940,
+        70,
+        20,
+        570
+      ],
+      [
+        300,
+        230,
+        200,
+        20
+      ]
+    ],
+    "doors": [
+      {
+        "id": "house_to_elevator",
+        "rect": [
+          910,
+          300,
+          30,
+          80
+        ],
+        "target_map": "elevator",
+        "target_spawn": [
+          60,
+          300
+        ],
+        "required_respect": 0
+      }
+    ],
+    "collectibles": [
+      "family_photo"
+    ],
+    "npcs": [
+      "mom"
+    ]
   },
   "elevator": {
     "name": "Elevator & Hall",
     "width": 960,
     "height": 640,
-    "floor_color": [55, 55, 65],
-    "walls": [[0, 70, 960, 20], [0, 620, 960, 20], [0, 70, 20, 570], [940, 70, 20, 570]],
-    "doors": [
-      {"id": "elevator_to_house", "rect": [20, 300, 30, 80], "target_map": "house", "target_spawn": [860, 300], "required_respect": 0},
-      {"id": "elevator_to_street", "rect": [900, 300, 30, 80], "target_map": "street", "target_spawn": [60, 300], "required_respect": 5}
+    "floor_color": [
+      55,
+      55,
+      65
     ],
-    "collectibles": ["old_key"],
-    "npcs": ["super"]
+    "walls": [
+      [
+        0,
+        70,
+        960,
+        20
+      ],
+      [
+        0,
+        620,
+        960,
+        20
+      ],
+      [
+        0,
+        70,
+        20,
+        570
+      ],
+      [
+        940,
+        70,
+        20,
+        570
+      ]
+    ],
+    "doors": [
+      {
+        "id": "elevator_to_house",
+        "rect": [
+          20,
+          300,
+          30,
+          80
+        ],
+        "target_map": "house",
+        "target_spawn": [
+          860,
+          300
+        ],
+        "required_respect": 0
+      },
+      {
+        "id": "elevator_to_street",
+        "rect": [
+          900,
+          300,
+          30,
+          80
+        ],
+        "target_map": "street",
+        "target_spawn": [
+          60,
+          300
+        ],
+        "required_respect": 5
+      }
+    ],
+    "collectibles": [
+      "old_key"
+    ],
+    "npcs": [
+      "super"
+    ]
   },
   "street": {
     "name": "City Street",
     "width": 960,
     "height": 640,
-    "floor_color": [50, 50, 50],
-    "walls": [[0, 70, 960, 20], [0, 620, 960, 20], [0, 70, 20, 570], [940, 70, 20, 570], [600, 200, 20, 300]],
-    "doors": [
-      {"id": "street_to_elevator", "rect": [20, 300, 30, 80], "target_map": "elevator", "target_spawn": [860, 300], "required_respect": 0},
-      {"id": "street_to_hood", "rect": [905, 260, 25, 120], "target_map": "hood", "target_spawn": [70, 340], "required_respect": 0}
+    "floor_color": [
+      50,
+      50,
+      50
     ],
-    "collectibles": ["spray_can"],
-    "npcs": ["ray"]
+    "walls": [
+      [
+        0,
+        70,
+        960,
+        20
+      ],
+      [
+        0,
+        620,
+        960,
+        20
+      ],
+      [
+        0,
+        70,
+        20,
+        570
+      ],
+      [
+        940,
+        70,
+        20,
+        570
+      ],
+      [
+        600,
+        200,
+        20,
+        300
+      ]
+    ],
+    "doors": [
+      {
+        "id": "street_to_elevator",
+        "rect": [
+          20,
+          300,
+          30,
+          80
+        ],
+        "target_map": "elevator",
+        "target_spawn": [
+          860,
+          300
+        ],
+        "required_respect": 0
+      },
+      {
+        "id": "street_to_hood",
+        "rect": [
+          905,
+          260,
+          25,
+          120
+        ],
+        "target_map": "hood",
+        "target_spawn": [
+          70,
+          340
+        ],
+        "required_respect": 0
+      }
+    ],
+    "collectibles": [
+      "spray_can"
+    ],
+    "npcs": [
+      "ray"
+    ]
   },
   "hood": {
     "name": "The Hood Courtyard",
     "width": 960,
     "height": 640,
-    "floor_color": [112, 114, 110],
-    "player_start": [70, 340],
+    "floor_color": [
+      112,
+      114,
+      110
+    ],
+    "player_start": [
+      70,
+      340
+    ],
     "walls": [
-      [0, 70, 960, 20], [0, 620, 960, 20], [0, 70, 20, 570], [940, 70, 20, 570],
-      [130, 130, 18, 360], [810, 130, 18, 360],
-      [320, 280, 160, 30], [520, 300, 140, 30],
-      [220, 500, 210, 20], [650, 500, 140, 20],
-      [420, 145, 120, 20], [740, 175, 100, 20]
+      [
+        0,
+        70,
+        960,
+        20
+      ],
+      [
+        0,
+        620,
+        960,
+        20
+      ],
+      [
+        0,
+        70,
+        20,
+        570
+      ],
+      [
+        940,
+        70,
+        20,
+        570
+      ],
+      [
+        130,
+        130,
+        18,
+        360
+      ],
+      [
+        810,
+        130,
+        18,
+        360
+      ],
+      [
+        320,
+        280,
+        160,
+        30
+      ],
+      [
+        520,
+        300,
+        140,
+        30
+      ],
+      [
+        220,
+        500,
+        210,
+        20
+      ],
+      [
+        650,
+        500,
+        140,
+        20
+      ],
+      [
+        420,
+        145,
+        120,
+        20
+      ],
+      [
+        740,
+        175,
+        100,
+        20
+      ]
     ],
     "doors": [
-      {"id": "hood_to_street", "rect": [20, 300, 30, 100], "target_map": "street", "target_spawn": [860, 300], "required_respect": 0},
-      {"id": "hood_entrance_north", "rect": [260, 90, 40, 20], "target_map": "hood", "target_spawn": [260, 130], "required_respect": 0},
-      {"id": "hood_hangout_access", "rect": [780, 470, 40, 20], "target_map": "hood", "target_spawn": [780, 440], "required_respect": 0},
-      {"id": "hood_to_school_path", "rect": [900, 120, 30, 110], "target_map": "hood", "target_spawn": [860, 120], "required_respect": 0}
+      {
+        "id": "hood_to_street",
+        "rect": [
+          20,
+          300,
+          30,
+          100
+        ],
+        "target_map": "street",
+        "target_spawn": [
+          860,
+          300
+        ],
+        "required_respect": 0
+      },
+      {
+        "id": "hood_entrance_north",
+        "rect": [
+          260,
+          90,
+          40,
+          20
+        ],
+        "target_map": "hood",
+        "target_spawn": [
+          260,
+          130
+        ],
+        "required_respect": 0
+      },
+      {
+        "id": "hood_hangout_access",
+        "rect": [
+          780,
+          470,
+          40,
+          20
+        ],
+        "target_map": "hood",
+        "target_spawn": [
+          780,
+          440
+        ],
+        "required_respect": 0
+      },
+      {
+        "id": "hood_to_school_path",
+        "rect": [
+          900,
+          120,
+          30,
+          110
+        ],
+        "target_map": "hood",
+        "target_spawn": [
+          860,
+          120
+        ],
+        "required_respect": 0
+      }
     ],
-    "collectibles": ["hood_tag", "hangout_tape", "school_route_flyer"],
-    "npcs": ["zuri", "uncle_tone", "coach_eli", "ms_nia"],
-    "decor": {
-      "rects": [
-        {"rect": [150, 150, 640, 330], "color": [126, 126, 122]},
-        {"rect": [170, 170, 600, 290], "color": [134, 134, 130]},
-        {"rect": [740, 440, 150, 120], "color": [95, 95, 92]},
-        {"rect": [835, 95, 95, 140], "color": [88, 95, 106]},
-        {"rect": [760, 210, 130, 70], "color": [68, 72, 75]},
-        {"rect": [830, 250, 85, 145], "color": [90, 90, 90]}
-      ],
-      "trees": [
-        [110, 120], [110, 500], [850, 120], [850, 500], [470, 560], [470, 95]
-      ],
-      "weeds": [
-        [270, 235], [450, 355], [620, 260], [300, 430], [540, 455], [700, 360]
-      ]
-    }
+    "collectibles": [
+      "hood_tag",
+      "hangout_tape",
+      "school_route_flyer"
+    ],
+    "npcs": [
+      "zuri",
+      "uncle_tone",
+      "coach_eli",
+      "ms_nia"
+    ],
+    "decorations": [
+      {
+        "type": "rect",
+        "x": 70,
+        "y": 90,
+        "w": 190,
+        "h": 170,
+        "color": [
+          122,
+          58,
+          46
+        ],
+        "label": "Apt A"
+      },
+      {
+        "type": "rect",
+        "x": 700,
+        "y": 95,
+        "w": 190,
+        "h": 175,
+        "color": [
+          128,
+          62,
+          50
+        ],
+        "label": "Apt B"
+      },
+      {
+        "type": "rect",
+        "x": 85,
+        "y": 360,
+        "w": 180,
+        "h": 165,
+        "color": [
+          118,
+          54,
+          44
+        ],
+        "label": "Apt C"
+      },
+      {
+        "type": "rect",
+        "x": 700,
+        "y": 360,
+        "w": 190,
+        "h": 170,
+        "color": [
+          124,
+          58,
+          46
+        ],
+        "label": "Apt D"
+      },
+      {
+        "type": "rect",
+        "x": 220,
+        "y": 170,
+        "w": 520,
+        "h": 300,
+        "color": [
+          155,
+          155,
+          150
+        ],
+        "label": "Central Courtyard"
+      },
+      {
+        "type": "path",
+        "points": [
+          [
+            230,
+            190
+          ],
+          [
+            730,
+            190
+          ],
+          [
+            730,
+            450
+          ],
+          [
+            230,
+            450
+          ],
+          [
+            230,
+            190
+          ]
+        ],
+        "width": 2,
+        "color": [
+          175,
+          175,
+          170
+        ]
+      },
+      {
+        "type": "line",
+        "x1": 230,
+        "y1": 230,
+        "x2": 730,
+        "y2": 230,
+        "width": 1,
+        "color": [
+          168,
+          168,
+          164
+        ]
+      },
+      {
+        "type": "line",
+        "x1": 230,
+        "y1": 270,
+        "x2": 730,
+        "y2": 270,
+        "width": 1,
+        "color": [
+          168,
+          168,
+          164
+        ]
+      },
+      {
+        "type": "line",
+        "x1": 230,
+        "y1": 310,
+        "x2": 730,
+        "y2": 310,
+        "width": 1,
+        "color": [
+          168,
+          168,
+          164
+        ]
+      },
+      {
+        "type": "line",
+        "x1": 230,
+        "y1": 350,
+        "x2": 730,
+        "y2": 350,
+        "width": 1,
+        "color": [
+          168,
+          168,
+          164
+        ]
+      },
+      {
+        "type": "line",
+        "x1": 230,
+        "y1": 390,
+        "x2": 730,
+        "y2": 390,
+        "width": 1,
+        "color": [
+          168,
+          168,
+          164
+        ]
+      },
+      {
+        "type": "line",
+        "x1": 270,
+        "y1": 180,
+        "x2": 270,
+        "y2": 460,
+        "width": 1,
+        "color": [
+          168,
+          168,
+          164
+        ]
+      },
+      {
+        "type": "line",
+        "x1": 320,
+        "y1": 180,
+        "x2": 320,
+        "y2": 460,
+        "width": 1,
+        "color": [
+          168,
+          168,
+          164
+        ]
+      },
+      {
+        "type": "line",
+        "x1": 370,
+        "y1": 180,
+        "x2": 370,
+        "y2": 460,
+        "width": 1,
+        "color": [
+          168,
+          168,
+          164
+        ]
+      },
+      {
+        "type": "line",
+        "x1": 420,
+        "y1": 180,
+        "x2": 420,
+        "y2": 460,
+        "width": 1,
+        "color": [
+          168,
+          168,
+          164
+        ]
+      },
+      {
+        "type": "line",
+        "x1": 470,
+        "y1": 180,
+        "x2": 470,
+        "y2": 460,
+        "width": 1,
+        "color": [
+          168,
+          168,
+          164
+        ]
+      },
+      {
+        "type": "line",
+        "x1": 520,
+        "y1": 180,
+        "x2": 520,
+        "y2": 460,
+        "width": 1,
+        "color": [
+          168,
+          168,
+          164
+        ]
+      },
+      {
+        "type": "line",
+        "x1": 570,
+        "y1": 180,
+        "x2": 570,
+        "y2": 460,
+        "width": 1,
+        "color": [
+          168,
+          168,
+          164
+        ]
+      },
+      {
+        "type": "line",
+        "x1": 620,
+        "y1": 180,
+        "x2": 620,
+        "y2": 460,
+        "width": 1,
+        "color": [
+          168,
+          168,
+          164
+        ]
+      },
+      {
+        "type": "line",
+        "x1": 670,
+        "y1": 180,
+        "x2": 670,
+        "y2": 460,
+        "width": 1,
+        "color": [
+          168,
+          168,
+          164
+        ]
+      },
+      {
+        "type": "rect",
+        "x": 320,
+        "y": 280,
+        "w": 80,
+        "h": 28,
+        "color": [
+          110,
+          110,
+          112
+        ],
+        "label": "Low Block"
+      },
+      {
+        "type": "rect",
+        "x": 445,
+        "y": 300,
+        "w": 90,
+        "h": 28,
+        "color": [
+          106,
+          106,
+          108
+        ],
+        "label": "Low Block"
+      },
+      {
+        "type": "rect",
+        "x": 570,
+        "y": 275,
+        "w": 82,
+        "h": 28,
+        "color": [
+          110,
+          110,
+          112
+        ],
+        "label": "Low Block"
+      },
+      {
+        "type": "rect",
+        "x": 780,
+        "y": 270,
+        "w": 125,
+        "h": 115,
+        "color": [
+          95,
+          99,
+          104
+        ],
+        "label": "Parking"
+      },
+      {
+        "type": "rect",
+        "x": 792,
+        "y": 285,
+        "w": 30,
+        "h": 16,
+        "color": [
+          186,
+          48,
+          48
+        ],
+        "label": "Car"
+      },
+      {
+        "type": "rect",
+        "x": 834,
+        "y": 285,
+        "w": 30,
+        "h": 16,
+        "color": [
+          44,
+          116,
+          184
+        ],
+        "label": "Car"
+      },
+      {
+        "type": "rect",
+        "x": 876,
+        "y": 285,
+        "w": 22,
+        "h": 16,
+        "color": [
+          218,
+          196,
+          64
+        ],
+        "label": "Car"
+      },
+      {
+        "type": "line",
+        "x1": 780,
+        "y1": 335,
+        "x2": 905,
+        "y2": 335,
+        "width": 2,
+        "color": [
+          210,
+          210,
+          205
+        ]
+      },
+      {
+        "type": "path",
+        "points": [
+          [
+            820,
+            140
+          ],
+          [
+            865,
+            140
+          ],
+          [
+            865,
+            215
+          ],
+          [
+            915,
+            215
+          ]
+        ],
+        "width": 5,
+        "color": [
+          242,
+          214,
+          92
+        ],
+        "label": "School Route"
+      },
+      {
+        "type": "rect",
+        "x": 768,
+        "y": 110,
+        "w": 165,
+        "h": 140,
+        "color": [
+          82,
+          108,
+          132
+        ],
+        "label": "School Court"
+      },
+      {
+        "type": "line",
+        "x1": 850,
+        "y1": 112,
+        "x2": 850,
+        "y2": 248,
+        "width": 2,
+        "color": [
+          230,
+          230,
+          230
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 850,
+        "y": 180,
+        "radius": 20,
+        "color": [
+          230,
+          230,
+          230
+        ],
+        "width": 2
+      },
+      {
+        "type": "rect",
+        "x": 735,
+        "y": 430,
+        "w": 180,
+        "h": 140,
+        "color": [
+          92,
+          90,
+          94
+        ],
+        "label": "Graffiti Hangout"
+      },
+      {
+        "type": "text",
+        "x": 745,
+        "y": 505,
+        "text": "GRAFFITI WALL",
+        "color": [
+          210,
+          118,
+          208
+        ],
+        "size": 16
+      },
+      {
+        "type": "rect",
+        "x": 248,
+        "y": 96,
+        "w": 60,
+        "h": 12,
+        "color": [
+          75,
+          145,
+          88
+        ],
+        "label": "Entrance"
+      },
+      {
+        "type": "rect",
+        "x": 760,
+        "y": 470,
+        "w": 60,
+        "h": 12,
+        "color": [
+          75,
+          145,
+          88
+        ],
+        "label": "Entrance"
+      },
+      {
+        "type": "circle",
+        "x": 115,
+        "y": 115,
+        "radius": 16,
+        "color": [
+          66,
+          128,
+          72
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 118,
+        "y": 117,
+        "radius": 10,
+        "color": [
+          86,
+          152,
+          90
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 195,
+        "y": 105,
+        "radius": 16,
+        "color": [
+          66,
+          128,
+          72
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 198,
+        "y": 107,
+        "radius": 10,
+        "color": [
+          86,
+          152,
+          90
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 765,
+        "y": 105,
+        "radius": 16,
+        "color": [
+          66,
+          128,
+          72
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 768,
+        "y": 107,
+        "radius": 10,
+        "color": [
+          86,
+          152,
+          90
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 850,
+        "y": 115,
+        "radius": 16,
+        "color": [
+          66,
+          128,
+          72
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 853,
+        "y": 117,
+        "radius": 10,
+        "color": [
+          86,
+          152,
+          90
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 110,
+        "y": 545,
+        "radius": 16,
+        "color": [
+          66,
+          128,
+          72
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 113,
+        "y": 547,
+        "radius": 10,
+        "color": [
+          86,
+          152,
+          90
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 195,
+        "y": 555,
+        "radius": 16,
+        "color": [
+          66,
+          128,
+          72
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 198,
+        "y": 557,
+        "radius": 10,
+        "color": [
+          86,
+          152,
+          90
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 770,
+        "y": 555,
+        "radius": 16,
+        "color": [
+          66,
+          128,
+          72
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 773,
+        "y": 557,
+        "radius": 10,
+        "color": [
+          86,
+          152,
+          90
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 860,
+        "y": 545,
+        "radius": 16,
+        "color": [
+          66,
+          128,
+          72
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 863,
+        "y": 547,
+        "radius": 10,
+        "color": [
+          86,
+          152,
+          90
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 470,
+        "y": 96,
+        "radius": 16,
+        "color": [
+          66,
+          128,
+          72
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 473,
+        "y": 98,
+        "radius": 10,
+        "color": [
+          86,
+          152,
+          90
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 470,
+        "y": 565,
+        "radius": 16,
+        "color": [
+          66,
+          128,
+          72
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 473,
+        "y": 567,
+        "radius": 10,
+        "color": [
+          86,
+          152,
+          90
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 305,
+        "y": 95,
+        "radius": 16,
+        "color": [
+          66,
+          128,
+          72
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 308,
+        "y": 97,
+        "radius": 10,
+        "color": [
+          86,
+          152,
+          90
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 640,
+        "y": 95,
+        "radius": 16,
+        "color": [
+          66,
+          128,
+          72
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 643,
+        "y": 97,
+        "radius": 10,
+        "color": [
+          86,
+          152,
+          90
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 305,
+        "y": 565,
+        "radius": 16,
+        "color": [
+          66,
+          128,
+          72
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 308,
+        "y": 567,
+        "radius": 10,
+        "color": [
+          86,
+          152,
+          90
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 640,
+        "y": 565,
+        "radius": 16,
+        "color": [
+          66,
+          128,
+          72
+        ]
+      },
+      {
+        "type": "circle",
+        "x": 643,
+        "y": 567,
+        "radius": 10,
+        "color": [
+          86,
+          152,
+          90
+        ]
+      }
+    ]
   }
 }
