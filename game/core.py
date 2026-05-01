@@ -1,7 +1,8 @@
 import json
+from pathlib import Path
 import pygame
 
-from game.settings import SCREEN_WIDTH, SCREEN_HEIGHT, FPS, COLORS, DATA_DIR, INTERACT_DISTANCE
+from game.settings import SCREEN_WIDTH, SCREEN_HEIGHT, FPS, COLORS, DATA_DIR, INTERACT_DISTANCE, PLAYER_SPRITE_SCALE
 from game.player import Player
 from game.npc import NPC
 from game.map import GameMap
@@ -35,8 +36,61 @@ class Game:
         self.current_map_id = "house"
         self.current_map = GameMap(self.current_map_id, self.maps_data[self.current_map_id])
         self.player = Player(80, 120)
+        self.player_sprites = self._load_player_sprites()
         self.dialogue_state = None
 
+
+    def _load_player_sprites(self):
+        sprite_path = Path("assets/sprites/player/tulla_sprite.png")
+        if not sprite_path.exists():
+            return None
+
+        try:
+            sheet = pygame.image.load(sprite_path.as_posix()).convert_alpha()
+        except pygame.error:
+            return None
+
+        frame_width = sheet.get_width() // 4
+        frame_height = sheet.get_height() // 4
+        if frame_width == 0 or frame_height == 0:
+            return None
+
+        rows = ["down", "left", "right", "up"]
+        sprites = {}
+        for row_index, direction in enumerate(rows):
+            frames = []
+            for col_index in range(4):
+                frame_rect = pygame.Rect(col_index * frame_width, row_index * frame_height, frame_width, frame_height)
+                frame = sheet.subsurface(frame_rect).copy()
+                frame.set_colorkey((255, 255, 255))
+                pixel_array = pygame.surfarray.pixels3d(frame)
+                mask = (pixel_array[:, :, 0] >= 245) & (pixel_array[:, :, 1] >= 245) & (pixel_array[:, :, 2] >= 245)
+                del pixel_array
+                alpha = pygame.surfarray.pixels_alpha(frame)
+                alpha[mask] = 0
+                del alpha
+                scaled_size = (
+                    max(1, int(self.player.rect.width * PLAYER_SPRITE_SCALE)),
+                    max(1, int(self.player.rect.height * PLAYER_SPRITE_SCALE)),
+                )
+                frame = pygame.transform.scale(frame, scaled_size)
+                frames.append(frame)
+            sprites[direction] = frames
+
+        return sprites
+
+    def _draw_player(self):
+        if not self.player_sprites:
+            pcolor = (70, 180, 255) if self.state.current_clothing == "default" else (170, 90, 240)
+            pygame.draw.rect(self.screen, pcolor, self.player.rect)
+            return
+
+        frames = self.player_sprites[self.player.direction]
+        frame_index = 0 if not self.player.is_moving else self.player.animation_frame + 1
+        sprite = frames[frame_index]
+        draw_x = self.player.rect.centerx - sprite.get_width() // 2
+        draw_y = self.player.rect.centery - sprite.get_height() // 2
+        self.screen.blit(sprite, (draw_x, draw_y))
     def _load_json(self, filename):
         with open(DATA_DIR / filename, "r", encoding="utf-8") as f:
             return json.load(f)
@@ -143,8 +197,7 @@ class Game:
             pygame.draw.rect(self.screen, COLORS["collectible"], (item["x"], item["y"], 16, 16))
         for npc in npcs:
             pygame.draw.rect(self.screen, npc.color, npc.rect)
-        pcolor = (70, 180, 255) if self.state.current_clothing == "default" else (170, 90, 240)
-        pygame.draw.rect(self.screen, pcolor, self.player.rect)
+        self._draw_player()
 
         prompt = ""
         near = self.get_near_npc(npcs)
