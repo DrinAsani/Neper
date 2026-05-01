@@ -86,6 +86,21 @@ Example:
 }
 ```
 
+## Map background images (optional, per-map)
+- Any map entry in `data/maps.json` can define an optional `background_image` field:
+```json
+{
+  "background_image": "assets/sprite/hood/hood_map.png"
+}
+```
+- The image is loaded relative to the project root, then scaled to the playable map area (`y=70` to map bottom) so it stays behind world objects while preserving the top HUD space.
+- Rendering order is:
+  1. map background image (if available),
+  2. walls/doors/collectibles/NPC/player/mission prompts,
+  3. UI and dialogue overlays.
+- If `background_image` is missing, the file does not exist, or loading fails, the game automatically falls back to the existing simple decoration/block rendering and continues running (no crash).
+- Hood map art should be placed at `assets/sprite/hood/hood_map.png` to match the default hood configuration.
+
 ## Replace placeholders with real assets
 - Keep data IDs the same.
 - Swap rectangle rendering in `game/core.py` with sprite blits.

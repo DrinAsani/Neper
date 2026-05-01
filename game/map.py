@@ -15,3 +15,4 @@ class GameMap:
         self.player_start = data.get("player_start")
         self.decor = data.get("decor", {})
         self.decorations = data.get("decorations", [])
+        self.background_image = data.get("background_image")
