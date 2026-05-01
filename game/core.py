@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 import pygame
 
-from game.settings import SCREEN_WIDTH, SCREEN_HEIGHT, FPS, COLORS, DATA_DIR, INTERACT_DISTANCE, PLAYER_SPRITE_SCALE
+from game.settings import SCREEN_WIDTH, SCREEN_HEIGHT, FPS, COLORS, DATA_DIR, ROOT_DIR, INTERACT_DISTANCE, PLAYER_SPRITE_SCALE
 from game.player import Player
 from game.npc import NPC
 from game.map import GameMap
@@ -35,6 +35,7 @@ class Game:
 
         self.current_map_id = "house"
         self.current_map = GameMap(self.current_map_id, self.maps_data[self.current_map_id])
+        self.map_background_surface = self._load_map_background(self.current_map)
         self.player = Player(80, 120)
         self.player_sprites = self._load_player_sprites()
         self.dialogue_state = None
@@ -101,6 +102,26 @@ class Game:
         with open(DATA_DIR / filename, "r", encoding="utf-8") as f:
             return json.load(f)
 
+    def _load_map_background(self, game_map):
+        image_path = getattr(game_map, "background_image", None)
+        if not image_path:
+            return None
+        try:
+            source = (ROOT_DIR / image_path).resolve()
+            if not source.exists():
+                return None
+            surface = pygame.image.load(source.as_posix()).convert()
+        except (pygame.error, OSError, ValueError):
+            return None
+
+        map_top = self._get_map_top()
+        map_height = max(1, game_map.height - map_top)
+        return pygame.transform.smoothscale(surface, (game_map.width, map_height))
+
+    @staticmethod
+    def _get_map_top():
+        return 70
+
     def build_npcs(self):
         npcs = []
         for npc_id in self.current_map.npcs:
@@ -135,6 +156,7 @@ class Game:
                 if self.state.respect >= required or door.get("id") in self.state.unlocked_doors:
                     self.current_map_id = door["target_map"]
                     self.current_map = GameMap(self.current_map_id, self.maps_data[self.current_map_id])
+                    self.map_background_surface = self._load_map_background(self.current_map)
                     self.player.rect.topleft = tuple(door["target_spawn"])
                 return
 
@@ -225,7 +247,10 @@ class Game:
 
     def draw(self, npcs):
         self.screen.fill(self.current_map.floor_color)
-        self._draw_map_decor()
+        if self.map_background_surface:
+            self.screen.blit(self.map_background_surface, (0, self._get_map_top()))
+        else:
+            self._draw_map_decor()
         for wall in self.current_map.walls:
             pygame.draw.rect(self.screen, COLORS["wall"], wall)
         for door in self.current_map.doors:
